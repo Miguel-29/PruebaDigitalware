@@ -1,0 +1,74 @@
+<form
+    class="text-center"
+    [formGroup]="signInForm"
+    #signInNgForm="ngForm">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Ubicación de destino</mat-label>
+        <mat-select [(value)]="selected" >
+            <mat-option  *ngFor="let city of listCitys" [value]="city.value">
+                {{city.nameCity}}
+            </mat-option>
+        </mat-select>
+        <mat-error>
+            Debe seleccionar un destino
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Fecha de llegada</mat-label>
+        <input
+            id="arrival"
+            matInput
+            class=""
+            type="date"
+            [formControlName]="'arrival'">
+        <mat-error>
+            Debe seleccionar una fecha de llegada
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Fecha del vuelo</mat-label>
+        <input
+            id="output"
+            matInput
+            class=""
+            type="date"
+            [formControlName]="'output'">
+        <mat-error>
+            Debe seleccionar una fecha de salida
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Cantidad de pasajeros</mat-label>
+        <input
+            id="passengers"
+            matInput
+            type="number"
+            [formControlName]="'passengers'">
+        <mat-error>
+            Debe ingresar la cantidad de pasajeros
+        </mat-error>
+    </mat-form-field>
+
+    <button
+        *ngIf="!data"
+        class="btn btn-primary"
+        mat-flat-button
+        (click)="saveFlight()">
+        <span class="" *ngIf="!signInForm.disabled">
+            Guardar registro
+        </span>
+    </button>
+    <button
+        *ngIf="data"
+        class="btn btn-primary"
+        mat-flat-button
+        (click)="updateFlight()">
+        <span class="" *ngIf="!signInForm.disabled">
+            Actualizar registro
+        </span>
+    </button>
+</form>

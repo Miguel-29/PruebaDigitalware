@@ -1,0 +1,73 @@
+<div class="mat-elevation-z8 ">
+    <table mat-table [dataSource]="dataSource" class="w-100">
+
+        <ng-container matColumnDef="header">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="7"> Lista de pilotos
+                <button class="float-end btn p-0 d-flex" mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>reorder</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="registerPilot()" mat-menu-item>Añadir piloto</button>
+                </mat-menu>
+            </th>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Edad </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> Rol </th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="years_experience">
+          <th mat-header-cell *matHeaderCellDef> Años de experiencia </th>
+          <td mat-cell *matCellDef="let element"> {{element.years_experience}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nationality">
+          <th mat-header-cell *matHeaderCellDef> Nacionalidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.nationality}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="options">
+          <th mat-header-cell *matHeaderCellDef> Opciones </th>
+          <td mat-cell *matCellDef="let element"> 
+                <button class="btn p-0 d-flex" mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>reorder</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="modPilot(element)" mat-menu-item>Modificar piloto</button>
+                    <button (click)="delPilot(element.id)" mat-menu-item>Eliminar piloto</button>
+                </mat-menu> 
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="footer">
+          <td mat-footer-cell *matFooterCellDef [attr.colspan]="7">
+            <a [attr.href]="'home'" class="float-end btn btn-info">Ir a listado de vuelos</a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['header']"></tr>      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="['footer']"></tr>      
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons 
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

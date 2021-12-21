@@ -1,0 +1,125 @@
+<form
+    class="text-center"
+    [formGroup]="signInForm"
+    #signInNgForm="ngForm">
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Usuario del piloto</mat-label>
+        <input
+            id="user"
+            matInput
+            type="text"
+            [formControlName]="'user'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar el usuario
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-group">
+        <mat-label class="">Contraseña del piloto</mat-label>
+        <input
+            id="password"
+            matInput
+            type="text"
+            [formControlName]="'password'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar una contraseña
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-group">
+        <mat-label class="">Rol del piloto</mat-label>
+        <input
+            id="role"
+            matInput
+            type="text"
+            [formControlName]="'role'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar el rol
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-group">
+        <mat-label class="">Nombre del piloto</mat-label>
+        <input
+            id="name"
+            matInput
+            type="text"
+            [formControlName]="'name'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar el nombre
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Apellidos del piloto</mat-label>
+        <input
+            id="lastName"
+            matInput
+            type="text"
+            [formControlName]="'lastName'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar los apellidos
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-group">
+        <mat-label class="">Edad del piloto</mat-label>
+        <input
+            id="age"
+            matInput
+            type="number"
+            [formControlName]="'age'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar la edad
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-group">
+        <mat-label class="">Años de experiencia</mat-label>
+        <input
+            id="years_experience"
+            matInput
+            type="number"
+            [formControlName]="'years_experience'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar los años de experiencia
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-group">
+        <mat-label class="">Nacionalidad</mat-label>
+        <input
+            id="nationality"
+            matInput
+            class=""
+            type="text"
+            [formControlName]="'nationality'"
+            #passwordField>
+        <mat-error>
+            Debe ingresar la nacionalidad
+        </mat-error>
+    </mat-form-field>
+    
+    <button
+        *ngIf="!data"
+        class="btn btn-primary"       
+        mat-flat-button        
+        (click)="savePilot()">
+        <span class="" *ngIf="!signInForm.disabled">
+            Guardar piloto
+        </span>
+    </button>
+
+    <button
+        *ngIf="data"
+        class="btn btn-primary"
+        mat-flat-button
+        (click)="updatePilot()">
+        <span class="" *ngIf="!signInForm.disabled">
+            Actualizar registro
+        </span>
+    </button>
+</form>
